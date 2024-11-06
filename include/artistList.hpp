@@ -13,7 +13,7 @@ public:
   static constexpr std::size_t max_genres = 10;
   std::string genres[max_genres];
   int popularity;
-
+  Artist() : artist_id{""}, artist_name{""} {};
   Artist(const std::string& artist_id, const std::string& artist_name, int total_followers = 0, std::string[Artist::max_genres] = {}, int popularity = 0);
 
   void printArtist() const;
