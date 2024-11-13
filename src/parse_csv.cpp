@@ -29,7 +29,22 @@ static void parse_genres(std::istream & file, std::string genres[Artist::max_gen
 
 // parse_csv needs to be written by the students
 ArtistList parse_csv(std::istream& file) {
-   // Insert code here
-   // be sure to call the provided parse_genres function to assist you
+    //make list var
+    ArtistList artistList;
+
+    std::string line, name, id, followers, genres, popularity;
+
+    while (std::getline(inputFile, line)) {
+        
+        stringsstream sline(line);
+        std::getline(sline, id, ',');
+        std::getline(sline, name, ',');
+        std::getline(sline, followers, ',');
+        parse_genres(sline, genres);
+        std::getline(sline, popularity, ',');
+
+
+    }
+
    // in reading the genres column from the spotify_daily_charts_artists.csv
 }
