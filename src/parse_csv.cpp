@@ -43,8 +43,13 @@ ArtistList parse_csv(std::istream& file) {
         parse_genres(sline, genres);
         std::getline(sline, popularity, ',');
 
+        int total_followers = std::stoi(followers);
+        int popularity = std::stoi(popularity);
 
-    }
+        Artist newArtist(id,name,followers,genres,popularity);
+        artistList.append(newArtist);
+}
 
-   // in reading the genres column from the spotify_daily_charts_artists.csv
+    return artistList;
+
 }
