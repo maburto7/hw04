@@ -2,6 +2,7 @@
 #include <artistList.hpp>
 #include <istream>
 #include <iostream>
+#include <sstream>
 
 // helper function provided to parse genres WITH square brackets
 static void parse_genres(std::istream & file, std::string genres[Artist::max_genres]) {
@@ -29,25 +30,36 @@ static void parse_genres(std::istream & file, std::string genres[Artist::max_gen
 
 // parse_csv needs to be written by the students
 ArtistList parse_csv(std::istream& file) {
-    //make list var
+
     ArtistList artistList;
 
-    std::string line, name, id, followers, genres, popularity;
+    std::string line, name, id, followersStr, popularityStr;
+    int total_followers, popularity;
+    std::string genres[Artist::max_genres];
 
-    while (std::getline(inputFile, line)) {
+    std::getline(file, line);
+
+    while (std::getline(file, line)) {
         
-        stringsstream sline(line);
+        std::stringstream sline(line);
+        
         std::getline(sline, id, ',');
         std::getline(sline, name, ',');
-        std::getline(sline, followers, ',');
+        
+        std::getline(sline, followersStr, ',');
+        std::cout<<followersStr<<std::endl;
+        
         parse_genres(sline, genres);
-        std::getline(sline, popularity, ',');
 
-        int total_followers = std::stoi(followers);
-        int popularity = std::stoi(popularity);
+        std::getline(sline, popularityStr, ',');
+        std::cout<<popularityStr<<std::endl;
 
-        Artist newArtist(id,name,followers,genres,popularity);
-        artistList.append(newArtist);
+
+        total_followers = std::stoi(followersStr);
+        popularity = std::stoi(popularityStr);
+
+        Artist newArtist(id,name,total_followers,genres,popularity);
+        artistList.appendArtist(newArtist);
 }
 
     return artistList;

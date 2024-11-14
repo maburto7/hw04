@@ -1,29 +1,19 @@
-# place makefile contents here
-
-# Compiler and flags
 CXX = g++
-CXXFLAGS = -std=c++17 -Wall -Iinclude
+CXXFLAGS = -std=c++20 -fsanitize=address -I ../include -g -Wall -Wextra
 
-# Output executable name
+SRC_FILES = main.cpp artistList.cpp artist.cpp parse_csv.cpp
+
+OBJ_FILES = main.o artistList.o artist.o parse_csv.o
+
 TARGET = hw04
 
-# Source files
-SRC = src/main.cpp src/artist.cpp src/artistList.cpp src/parse_csv.cpp
+all: $(TARGET)
 
-# Object files
-OBJ = $(SRC:.cpp=.o)
+$(TARGET): $(OBJ_FILES)
+	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJ_FILES)
 
-# Rule to build the target
-$(TARGET): $(OBJ)
-	$(CXX) $(OBJ) -o $(TARGET)
+lib/%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o lib/$@
 
-# Rule to build object files
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
-
-# Clean up object files and the target executable
 clean:
-	rm -f $(OBJ) $(TARGET)
-
-# Phony targets
-.PHONY: clean
+	rm -f lib/*.o $(TARGET)

@@ -8,6 +8,7 @@
 #include <fstream>
 
 int main() {
+	std::cout<<"STARTING..."<<std::endl;
 	std::ifstream in_file("spotify_daily_charts_artists.csv");
 	ArtistList l = parse_csv(in_file);
 
