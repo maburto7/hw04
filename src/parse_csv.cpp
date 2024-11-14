@@ -79,24 +79,48 @@ ArtistList parse_csv(std::istream& file) {
         
 
 }
-    //artistList.printArtistList();
+    std::cout<<"FULL LIST: "<<std::endl;
+    artistList.printArtistList();
 
     artistList.removeFirstArtist();
     artistList.removeLastArtist();
 
-    //std::cout<<"SECOND PRINT"<<std::endl;
-    //artistList.printArtistList();
+    std::cout<<std::endl;
+    std::cout<<"NO FIRST OR LAST ARTIST LIST: "<<std::endl;
+    artistList.printArtistList();
+
+    std::cout<<std::endl;
+    std::cout<<"EXO CONST AT TEST SHOULD PRINT 2: "<<std::endl;
 
     Artist* foundArtist = artistList.findArtistName("EXO");
     //std::cout<<foundArtist->genres<<std::endl;
     std::cout<<foundArtist->total_followers<<' '<<foundArtist->name()<<std::endl;
 
-    artistList.removeArtistbyName("EXO");
-    //Artist* newArt = artistList.findArtistName("EXO");
-    //std::cout<<newArt->total_followers<<' '<<newArt->name()<<std::endl;
+    const Artist* constArtist = artistList.at(1);
+    std::cout<<constArtist->total_followers<<' '<<constArtist->name()<<std::endl;
 
-    std::cout<<"Third PRINT"<<std::endl;
+    artistList.removeArtistbyName("EXO");
+    Artist* newArt = artistList.findArtistName("EXO");
+    std::cout<<newArt<<std::endl;
+    if(newArt==nullptr){
+        std::cout<<"NO NAME FOUND"<<std::endl;
+    }
+
+    std::cout<<std::endl;
+    std::cout<<"Third PRINT after removing EXO"<<std::endl;
+
+    //std::string genres1[] = {"Rock", "Pop", "Jazz"};
+    //Artist artist1("A123", "John Doe", 10000, genres1, 95);
+    
+    //artistList.insertArtistAt(3,artist1);
     artistList.printArtistList();
+
+
+    std::cout<<std::endl;
+    std::cout<<"PRINT FIRST FROM ABOVE LSIT"<<std::endl;
+    Artist* temp = artistList.firstArtist();
+    std::cout<<temp->total_followers<<' '<<temp->name()<<std::endl;
+
 
     
 

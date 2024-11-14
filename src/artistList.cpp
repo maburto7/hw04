@@ -161,10 +161,40 @@ void ArtistList::removeArtistbyName(const std::string & name) {
     }
     ptr = ptr->next;
   }
-
+  return;
 
 }
 
+void ArtistList::insertArtistAt(std::size_t index, const Artist& artist) {
+  std::cout<<"HEREEEE"<<index<<length<<std::endl;
+  if (index >= length-1) {return;}
+  
+  ArtistEntry* newEntry = new ArtistEntry(this, artist);
+  if (index == 0) { 
+    newEntry->next = first;
+    if (first != nullptr) {
+      first->prev = newEntry;
+      }
+    first = newEntry;
+  } else {
+      ArtistEntry* ptr = first;
+      for(std::size_t i = 0; i< (index-1); i++){
+        ptr = ptr->next;
+      }
+      ArtistEntry* after = ptr->next;
+      ArtistEntry* before = ptr->prev;
+
+      newEntry->next = after;
+      newEntry->prev = before;
+      ptr->next = newEntry;
+
+      if (after!=nullptr){
+        after->prev = newEntry;
+      }
+  }
+  length++;
+      
+}
 
 Artist * ArtistList::at(size_t index) {
   //return this->list[index];
@@ -178,26 +208,27 @@ Artist * ArtistList::at(size_t index) {
   return &current->artist;
 }
 
+const Artist * ArtistList::at(size_t index) const {
+  if (index >= length) {return nullptr;}
+
+  ArtistEntry* current = first;
+  for (std::size_t i = 0; i < index; ++i) {
+    current = current->next;
+    }
+
+  return &current->artist;
+  
+}
+
+Artist* ArtistList::firstArtist() {
+  if(is_empty()){return nullptr;}
+  
+  return &first->artist;
+}
 
 /*
 
 
-
-void ArtistList::insertArtistAt(std::size_t index, const Artist& artist) {
-  //
-}
-
-Artist * ArtistList::at(size_t index) {
-  //
-}
-
-const Artist * ArtistList::at(size_t index) const {
-  //
-}
-
-Artist* ArtistList::firstArtist() {
-  //
-}
 
 const Artist* ArtistList::  firstArtist() const {
   //
