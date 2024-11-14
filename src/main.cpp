@@ -29,13 +29,16 @@ int main() {
 		} else {
 			artist_begin_not_alpha++;
 		}
-	}
 
+	}
+	
 	for (int i = 0; i < 26; i++) {
 		std::cout << "Artist names beginning with " <<  (char)('A'+i) << ": " << artist_begin_with[i] << std::endl;
 	}
 
 	std::cout << "Artist names not beginning with a letter: " << artist_begin_not_alpha << std::endl;
+
+
 
 	return 0;
 	

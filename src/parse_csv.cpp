@@ -49,15 +49,17 @@ ArtistList parse_csv(std::istream& file) {
         std::getline(sline, followersStr, ',');
         //std::cout<<followersStr<<std::endl;
         
-        std::string temp, raw_genres;
+        std::string raw_genres;
 
-        std::getline(sline, temp, '"');
-        std::getline(sline, raw_genres, '"');
+        std::getline(sline, raw_genres, '[');
+        std::getline(sline, raw_genres, ']');
         
         std::istringstream genre_stream(raw_genres);
         parse_genres(genre_stream, genres);
-        //std::cout<<genres<<std::endl;
+        //parse_genres(std::istringstream genre_stream(std::getline(file, raw_genres), genres));
+        //std::cout<<raw_genres<<std::endl;
         
+        if (sline.peek() == '"'){sline.ignore(1, '"');}
 
         sline.ignore(1, ',');
 
@@ -65,11 +67,23 @@ ArtistList parse_csv(std::istream& file) {
         std::getline(sline, popularityStr);
         //std::cout<<popularityStr<<std::endl;
 
+
         total_followers = std::stoi(followersStr);
         popularity = std::stoi(popularityStr);
 
         Artist newArtist(id,name,total_followers,genres,popularity);
         artistList.appendArtist(newArtist);
+
+        //RUNNING TESTS
+        //artistList.prependArtist(newArtist);
+        artistList.printArtistList();
+
+        artistList.removeFirstArtist();
+        std::cout<<"NOW AGAIN"<<std::endl;
+
+        artistList.printArtistList();
+
+        std::cout<<"??"<<std::endl;
 }
 
     return artistList;

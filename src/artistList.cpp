@@ -45,21 +45,55 @@ ArtistList::~ArtistList() noexcept {
     }
 }
 
+// prepend an artist at the beginning of list
+void ArtistList::prependArtist(const Artist& a) {
+  ArtistEntry* newEntry = new ArtistEntry(this,a);
+  if (is_empty()){
+    first = last = newEntry;
+  } else {
+    first->prev = newEntry;
+    newEntry->prev = nullptr;
+    newEntry->next = first;
+    first = newEntry;
+  }
+  ++length;
+}
+
 // append an artist to the end of the list
 void ArtistList::appendArtist(const Artist& a) {
-  std::cout<<"APPEEEND"<<std::endl;
+  //std::cout<<"APPEEEND"<<std::endl;
   ArtistEntry* newEntry = new ArtistEntry(this, a);
 
   if (is_empty()) {
-    first = last = newEntry;
+    first = newEntry;
+    last = newEntry;
   } else {
     last->next = newEntry;
     newEntry->prev = last;
     last = newEntry;
   }
   ++length;
-  std::cout<<length;
+  //std::cout<<length<<std::endl;
   //
+}
+
+// remove the first artist from the list
+void ArtistList::removeFirstArtist() {
+  if (is_empty()) {
+        return;
+    }
+  ArtistEntry* ptr = first;
+  
+  if (first == last) {
+      first = nullptr;
+      last = nullptr;
+} else {
+      first = first->next;
+      first->prev = nullptr;
+    }
+
+    delete ptr;
+    length--;
 }
 
 Artist * ArtistList::at(size_t index) {
@@ -77,18 +111,15 @@ Artist * ArtistList::at(size_t index) {
     return &current->artist;
 }
 
-
-/*
-
-
-// prepend an artist at the beginning of list
-void ArtistList::prependArtist(const Artist& a) {
-  //}
-
-// append an artist to the end of the list
-void ArtistList::appendArtist(const Artist& a) {
-  //
+// print an artist list
+void ArtistList::printArtistList() const {
+  ArtistEntry* ptr = first;
+  while(ptr!=nullptr){
+      ptr->artist.printArtist();
+      ptr = ptr->next;
+  }
 }
+/*
 
 // remove the first artist from the list
 void ArtistList::removeFirstArtist() {
