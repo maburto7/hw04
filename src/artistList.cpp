@@ -222,25 +222,24 @@ const Artist * ArtistList::at(size_t index) const {
 
 Artist* ArtistList::firstArtist() {
   if(is_empty()){return nullptr;}
-  
   return &first->artist;
 }
 
-/*
-
-
-
 const Artist* ArtistList::  firstArtist() const {
-  //
+  if(is_empty()){return nullptr;}
+  return &first->artist;
 }
+
 
 Artist* ArtistList:: lastArtist() {
-  //
+  if(is_empty()){return nullptr;}
+  return &last->artist;
 }
+
 
 const Artist* ArtistList:: lastArtist() const {
-  //
-  
+  if(is_empty()){return nullptr;}
+  return &last->artist;
 }
 
-*/
+

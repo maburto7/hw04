@@ -122,7 +122,23 @@ ArtistList parse_csv(std::istream& file) {
     std::cout<<temp->total_followers<<' '<<temp->name()<<std::endl;
 
 
-    
+    std::cout<<std::endl;
+    std::cout<<"PRINT CONST CONST FIRST FROM ABOVE LSIT"<<std::endl;
+    const Artist* tempConst = artistList.firstArtist();
+    std::cout<<tempConst->total_followers<<' '<<tempConst->name()<<std::endl;
+
+    std::cout<<std::endl;
+    std::cout<<"PRINT LAST FROM ABOVE LSIT"<<std::endl;
+    Artist* tempLast = artistList.lastArtist();
+    std::cout<<tempLast->total_followers<<' '<<tempLast->name()<<std::endl;
+
+    std::cout<<std::endl;
+    std::cout<<"PRINT CONST CONST LAST FROM ABOVE LSIT"<<std::endl;
+    const Artist* tempLastConst = artistList.lastArtist();
+    std::cout<<tempLastConst->total_followers<<' '<<tempLastConst->name()<<std::endl;
+
+
+
 
     return artistList;
 
