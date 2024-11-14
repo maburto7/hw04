@@ -130,6 +130,41 @@ Artist *ArtistList::findArtistName(const std::string& name) const {
   return nullptr;
 }
 
+// remove artist by name in an unsorted list
+void ArtistList::removeArtistbyName(const std::string & name) {
+  //ArtistEntry* ptr = findArtistName(name);
+  //ArtistEntry* ptr = first;
+  //ArtistEntry* ptr = findArtistName(name);
+
+  if(is_empty()){return;}
+  
+  ArtistEntry* ptr = first;
+  
+  while(ptr!=nullptr){
+    if(ptr->artist.name() == name){
+      ArtistEntry* before = ptr->prev;
+      ArtistEntry* after = ptr->next;
+
+      if(before!=nullptr){
+        before->next = after;
+      } else{
+        first = after;
+      }
+
+      if(after!=nullptr){
+        after->prev = before;
+      }
+
+      delete ptr;
+      length--;
+      return;
+    }
+    ptr = ptr->next;
+  }
+
+
+}
+
 
 Artist * ArtistList::at(size_t index) {
   //return this->list[index];
@@ -147,16 +182,6 @@ Artist * ArtistList::at(size_t index) {
 /*
 
 
-
-// find an artist by name in an unsorted list
-Artist *ArtistList::findArtistName(const std::string& name) const {
-  //
-}
-
-// remove artist by name in an unsorted list
-void ArtistList::removeArtistbyName(const std::string & name) {
-  //
-}
 
 void ArtistList::insertArtistAt(std::size_t index, const Artist& artist) {
   //
