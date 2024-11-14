@@ -9,9 +9,9 @@ Artist::Artist(const std::string & artist_id, const std::string & artist_name, i
     this->artist_name = artist_name;
     this->total_followers = total_followers;
     this->popularity = popularity;
-
+    int temp = max_genres;
     // Copy the genres array into the member variable genres
-    for (int i = 0; i < Artist::max_genres; ++i) {
+    for (int i = 0; i < temp; ++i) {
         this->genres[i] = genres[i];  // Assuming genres is an array of strings
     }
 }
@@ -25,8 +25,8 @@ void Artist::printArtist() const{
 
   std::cout << "Genres: ";
   bool first = true;
-
-  for (int i = 0; i < max_genres; i++) {
+  int temp = max_genres;
+  for (int i = 0; i < temp; i++) {
     if (!genres[i].empty()) {
       if (!first) {
         std::cout << ", ";

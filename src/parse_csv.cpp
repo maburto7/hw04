@@ -79,6 +79,7 @@ ArtistList parse_csv(std::istream& file) {
         
 
 }
+    /*
     std::cout<<"FULL LIST: "<<std::endl;
     artistList.printArtistList();
 
@@ -109,10 +110,7 @@ ArtistList parse_csv(std::istream& file) {
     std::cout<<std::endl;
     std::cout<<"Third PRINT after removing EXO"<<std::endl;
 
-    //std::string genres1[] = {"Rock", "Pop", "Jazz"};
-    //Artist artist1("A123", "John Doe", 10000, genres1, 95);
     
-    //artistList.insertArtistAt(3,artist1);
     artistList.printArtistList();
 
 
@@ -137,9 +135,26 @@ ArtistList parse_csv(std::istream& file) {
     const Artist* tempLastConst = artistList.lastArtist();
     std::cout<<tempLastConst->total_followers<<' '<<tempLastConst->name()<<std::endl;
 
+    //std::cout<<artistList.size();
 
+    std::cout<<std::endl;
+    std::cout<<"INSERT ARTIST "<<std::endl;
+    //std::string genres1 = "[\"Rock\", \"Pop\", \"Jazz\"]";
+    //std::istringstream genre_stream(genres1);
+    //parse_genres(genre_stream, genres1);
+    const std::string idTest= "A123";
+    const std::string nameTest = "EXONEW";
+    int followersTest = 29321;
+    int popularityTest = 21;
+    std::string genres1[Artist::max_genres] = {"Rock", "Pop", "Jazz"};
 
-
+    Artist artist1(idTest, nameTest, followersTest, genres1, popularityTest);
+    
+    artistList.insertArtistAt(1,artist1);
+    artistList.printArtistList();
+    //std::cout<<artistList.length;
+    */
+    
     return artistList;
 
 }

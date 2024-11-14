@@ -56,7 +56,7 @@ void ArtistList::prependArtist(const Artist& a) {
     newEntry->next = first;
     first = newEntry;
   }
-  ++length;
+  length++;
 }
 
 // append an artist to the end of the list
@@ -72,7 +72,7 @@ void ArtistList::appendArtist(const Artist& a) {
     newEntry->prev = last;
     last = newEntry;
   }
-  ++length;
+  length++;
   //std::cout<<length<<std::endl;
   //
 }
@@ -99,8 +99,12 @@ void ArtistList::removeLastArtist() {
   if (is_empty()){return;}
   ArtistEntry* ptr = last;
 
+  if(first==last){
+    first = nullptr;
+    last = nullptr;
+  }else{
   last = last->prev;
-  last->next = nullptr;
+  last->next = nullptr;}
 
   delete ptr;
   length--;
@@ -166,34 +170,35 @@ void ArtistList::removeArtistbyName(const std::string & name) {
 }
 
 void ArtistList::insertArtistAt(std::size_t index, const Artist& artist) {
-  std::cout<<"HEREEEE"<<index<<length<<std::endl;
-  if (index >= length-1) {return;}
+  if (index >= length) {return;}
   
   ArtistEntry* newEntry = new ArtistEntry(this, artist);
-  if (index == 0) { 
-    newEntry->next = first;
-    if (first != nullptr) {
+
+  if (length == 0||is_empty()) {
+      first = newEntry;
+      newEntry->prev = nullptr;
+      newEntry->next = nullptr;
+
+
+  } else if (index == 0) { //prepending function
+      newEntry->next = first;
+      newEntry->prev = nullptr;
       first->prev = newEntry;
-      }
-    first = newEntry;
+      first = newEntry;
+
   } else {
       ArtistEntry* ptr = first;
-      for(std::size_t i = 0; i< (index-1); i++){
+      for(std::size_t i = 0; i<index; i++){
         ptr = ptr->next;
       }
-      ArtistEntry* after = ptr->next;
+
       ArtistEntry* before = ptr->prev;
-
-      newEntry->next = after;
+      newEntry->next = ptr;
       newEntry->prev = before;
-      ptr->next = newEntry;
-
-      if (after!=nullptr){
-        after->prev = newEntry;
-      }
+      before->next = newEntry;
+      ptr->prev = newEntry;
   }
-  length++;
-      
+  length++;    
 }
 
 Artist * ArtistList::at(size_t index) {
