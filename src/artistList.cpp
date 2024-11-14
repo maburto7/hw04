@@ -106,19 +106,6 @@ void ArtistList::removeLastArtist() {
   length--;
 }
 
-Artist * ArtistList::at(size_t index) {
-  //return this->list[index];
-  if (index >= length) {
-        return nullptr;
-    }
-
-    ArtistEntry* current = first;
-    for (std::size_t i = 0; i < index; ++i) {
-        current = current->next;
-    }
-    return &current->artist;
-}
-
 // print an artist list
 void ArtistList::printArtistList() const {
   ArtistEntry* ptr = first;
@@ -127,15 +114,39 @@ void ArtistList::printArtistList() const {
       ptr = ptr->next;
   }
 }
+
+
+// find an artist by name in an unsorted list
+Artist *ArtistList::findArtistName(const std::string& name) const {
+  if (is_empty()){return nullptr;}
+
+  ArtistEntry* ptr = first;
+  while(ptr!=nullptr){
+    if(ptr->artist.name() == name){
+      return &ptr->artist;
+    }
+    ptr = ptr->next;
+  }
+  return nullptr;
+}
+
+
+Artist * ArtistList::at(size_t index) {
+  //return this->list[index];
+  if (index >= length) {return nullptr;}
+
+  ArtistEntry* current = first;
+  for (std::size_t i = 0; i < index; ++i) {
+    current = current->next;
+    }
+
+  return &current->artist;
+}
+
+
 /*
 
 
-
-
-// print an artist list
-void ArtistList::printArtistList() const {
-  //
-}
 
 // find an artist by name in an unsorted list
 Artist *ArtistList::findArtistName(const std::string& name) const {

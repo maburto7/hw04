@@ -85,6 +85,10 @@ ArtistList parse_csv(std::istream& file) {
     artistList.removeLastArtist();
     artistList.printArtistList();
 
+    Artist* foundArtist = artistList.findArtistName("EXO");
+    //std::cout<<foundArtist->genres<<std::endl;
+    std::cout<<foundArtist->total_followers<<' '<<foundArtist->name()<<std::endl;
+
     return artistList;
 
 }
