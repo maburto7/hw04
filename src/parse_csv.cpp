@@ -47,13 +47,23 @@ ArtistList parse_csv(std::istream& file) {
         std::getline(sline, name, ',');
         
         std::getline(sline, followersStr, ',');
-        std::cout<<followersStr<<std::endl;
+        //std::cout<<followersStr<<std::endl;
         
-        parse_genres(sline, genres);
+        std::string temp, raw_genres;
 
-        std::getline(sline, popularityStr, ',');
-        std::cout<<popularityStr<<std::endl;
+        std::getline(sline, temp, '"');
+        std::getline(sline, raw_genres, '"');
+        
+        std::istringstream genre_stream(raw_genres);
+        parse_genres(genre_stream, genres);
+        //std::cout<<genres<<std::endl;
+        
 
+        sline.ignore(1, ',');
+
+        
+        std::getline(sline, popularityStr);
+        //std::cout<<popularityStr<<std::endl;
 
         total_followers = std::stoi(followersStr);
         popularity = std::stoi(popularityStr);

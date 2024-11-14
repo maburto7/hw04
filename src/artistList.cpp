@@ -4,14 +4,17 @@
 #include <iostream>
 
 ArtistList::ArtistEntry::ArtistEntry(ArtistList* list, const Artist& a) {
-  /* Insert your code here */
-  this->list = list;
-  this->artist = a;
+    this->list = list;
+    this->artist = a;
+    this->next = nullptr;
+    this->prev = nullptr;
 }
 
 // Allocate a new artist list. Constructor as empty list
 ArtistList::ArtistList() {
-  /* Insert your code here */
+    length = 0;
+    first = nullptr;
+    last = nullptr;
 }
 
 std::size_t ArtistList::size() const {return length;}
@@ -34,7 +37,7 @@ ArtistList::ArtistList(const ArtistList & list) {
 
 // Delete a artist list (and all entries)
 ArtistList::~ArtistList() noexcept {
-  ArtistEntry* current = first;  // Start from the first node in the list
+  ArtistEntry* current = first;
     while (current != nullptr) {
         ArtistEntry* next = current->next;
         delete current;

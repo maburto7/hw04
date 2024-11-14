@@ -9,7 +9,8 @@
 
 int main() {
 	std::cout<<"STARTING..."<<std::endl;
-	std::ifstream in_file("spotify_daily_charts_artists.csv");
+	//std::ifstream in_file("spotify_daily_charts_artists.csv");
+	std::ifstream in_file("test.csv");
 	ArtistList l = parse_csv(in_file);
 
 	// count artist names who begin with a, b, c, d, ...
