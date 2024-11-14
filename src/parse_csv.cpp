@@ -76,15 +76,15 @@ ArtistList parse_csv(std::istream& file) {
 
         //RUNNING TESTS
         //artistList.prependArtist(newArtist);
-        artistList.printArtistList();
+        
 
-        artistList.removeFirstArtist();
-        std::cout<<"NOW AGAIN"<<std::endl;
-
-        artistList.printArtistList();
-
-        std::cout<<"??"<<std::endl;
 }
+    //artistList.printArtistList();
+
+    artistList.removeFirstArtist();
+
+    artistList.printArtistList();
+    std::cout<<"FINSIHED"<<std::endl;
 
     return artistList;
 

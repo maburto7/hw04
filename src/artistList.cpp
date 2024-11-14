@@ -82,18 +82,18 @@ void ArtistList::removeFirstArtist() {
   if (is_empty()) {
         return;
     }
-  ArtistEntry* ptr = first;
-  
-  if (first == last) {
-      first = nullptr;
-      last = nullptr;
-} else {
-      first = first->next;
-      first->prev = nullptr;
-    }
 
-    delete ptr;
-    length--;
+  ArtistEntry* ptr = first;
+
+  first = first->next;
+
+  if (first != nullptr) {
+    first->prev = nullptr;
+    } else {
+        last = nullptr;
+    }
+  delete ptr;
+  length--;
 }
 
 Artist * ArtistList::at(size_t index) {
@@ -103,11 +103,9 @@ Artist * ArtistList::at(size_t index) {
     }
 
     ArtistEntry* current = first;
-
     for (std::size_t i = 0; i < index; ++i) {
         current = current->next;
     }
-
     return &current->artist;
 }
 
