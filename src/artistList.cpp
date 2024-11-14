@@ -79,9 +79,7 @@ void ArtistList::appendArtist(const Artist& a) {
 
 // remove the first artist from the list
 void ArtistList::removeFirstArtist() {
-  if (is_empty()) {
-        return;
-    }
+  if (is_empty()) {return;}
 
   ArtistEntry* ptr = first;
 
@@ -92,6 +90,18 @@ void ArtistList::removeFirstArtist() {
     } else {
         last = nullptr;
     }
+  delete ptr;
+  length--;
+}
+
+// remove last artist from the list
+void ArtistList::removeLastArtist() {
+  if (is_empty()){return;}
+  ArtistEntry* ptr = last;
+
+  last = last->prev;
+  last->next = nullptr;
+
   delete ptr;
   length--;
 }
@@ -119,15 +129,8 @@ void ArtistList::printArtistList() const {
 }
 /*
 
-// remove the first artist from the list
-void ArtistList::removeFirstArtist() {
-  //
-}
 
-// remove last artist from the list
-void ArtistList::removeLastArtist() {
-  //
-}
+
 
 // print an artist list
 void ArtistList::printArtistList() const {

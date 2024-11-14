@@ -82,9 +82,8 @@ ArtistList parse_csv(std::istream& file) {
     //artistList.printArtistList();
 
     artistList.removeFirstArtist();
-
+    artistList.removeLastArtist();
     artistList.printArtistList();
-    std::cout<<"FINSIHED"<<std::endl;
 
     return artistList;
 
