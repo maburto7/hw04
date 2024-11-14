@@ -50,7 +50,6 @@ void ArtistList::appendArtist(const Artist& a) {
   std::cout<<"APPEEEND"<<std::endl;
   ArtistEntry* newEntry = new ArtistEntry(this, a);
 
-
   if (is_empty()) {
     first = last = newEntry;
   } else {
@@ -58,8 +57,8 @@ void ArtistList::appendArtist(const Artist& a) {
     newEntry->prev = last;
     last = newEntry;
   }
-  
   ++length;
+  std::cout<<length;
   //
 }
 
