@@ -80,6 +80,7 @@ ArtistList parse_csv(std::istream& file) {
 
 }
     /*
+    
     std::cout<<"FULL LIST: "<<std::endl;
     artistList.printArtistList();
 
@@ -153,8 +154,25 @@ ArtistList parse_csv(std::istream& file) {
     artistList.insertArtistAt(1,artist1);
     artistList.printArtistList();
     //std::cout<<artistList.length;
-    */
     
+    artistList.removeFirstArtist();
+    artistList.removeLastArtist();
+    artistList.removeFirstArtist();
+
+    std::cout<<std::endl;
+    std::cout<<"EMPTY ARTIST LIST"<<std::endl;
+    artistList.printArtistList();
+
+    std::string genres2[Artist::max_genres] = {"j", "brainrot", "Ohio"};
+
+    Artist artist2(idTest, nameTest, followersTest, genres2, popularityTest);
+    
+    artistList.insertArtistAt(0,artist2);
+    std::cout<<std::endl;
+    std::cout<<"ONE ARTIST LIST"<<std::endl;
+    artistList.printArtistList();
+    */
+
     return artistList;
 
 }
