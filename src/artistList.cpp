@@ -184,14 +184,13 @@ void ArtistList::insertArtistAt(std::size_t index, const Artist& artist) {
 
 
   if (index == 0) { //prepending function
-    std::cout<<"NO WYA HERE";
     newEntry->next = first;
     newEntry->prev = nullptr;
     first->prev = newEntry;
     first = newEntry;
 
   } else {
-    std::cout<<"SDF";
+
       ArtistEntry* ptr = first;
       for(std::size_t i = 0; i<index; i++){
         ptr = ptr->next;
