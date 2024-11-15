@@ -10,9 +10,8 @@ Artist::Artist(const std::string & artist_id, const std::string & artist_name, i
     this->total_followers = total_followers;
     this->popularity = popularity;
     int temp = max_genres;
-    // Copy the genres array into the member variable genres
     for (int i = 0; i < temp; ++i) {
-        this->genres[i] = genres[i];  // Assuming genres is an array of strings
+        this->genres[i] = genres[i];
     }
 }
 

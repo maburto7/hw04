@@ -170,8 +170,32 @@ void ArtistList::removeArtistbyName(const std::string & name) {
 }
 
 void ArtistList::insertArtistAt(std::size_t index, const Artist& artist) {
+  if(index>length){return;}
+  
+  if (index==0){
+    prependArtist(artist);
+  } else if(index == length){
+    appendArtist(artist);
+  } else{
+      ArtistEntry *newEntry = new ArtistEntry(this, artist);
+      ArtistEntry* ptr = first;
+        for(std::size_t i = 0; i<index; i++){
+          ptr = ptr->next;
+        }
+
+        ArtistEntry* before = ptr->prev;
+        newEntry->next = ptr;
+        newEntry->prev = before;
+        before->next = newEntry;
+        ptr->prev = newEntry;
+        length++;
+
+  }
+  /*
   if (index >= length && index!=0) {return;}
-  if(is_empty()){
+
+
+  if(is_empty()){ //prepending
     ArtistEntry* newEntry = new ArtistEntry(this, artist);
     first = last = newEntry;
     newEntry->prev = nullptr;
@@ -188,6 +212,7 @@ void ArtistList::insertArtistAt(std::size_t index, const Artist& artist) {
     newEntry->prev = nullptr;
     first->prev = newEntry;
     first = newEntry;
+    length++;
 
   } else {
 
@@ -201,8 +226,9 @@ void ArtistList::insertArtistAt(std::size_t index, const Artist& artist) {
       newEntry->prev = before;
       before->next = newEntry;
       ptr->prev = newEntry;
+      length++;
   }
-  length++;
+  */
     
 }
 

@@ -73,13 +73,15 @@ ArtistList parse_csv(std::istream& file) {
 
         Artist newArtist(id,name,total_followers,genres,popularity);
         artistList.appendArtist(newArtist);
-
-        //RUNNING TESTS
-        //artistList.prependArtist(newArtist);
         
 
 }
-    /*
+    ArtistList copy = artistList;
+    //std::cout<<"LENGTH: "<<copy.size()<<std::endl;
+    //std::cout<<"OG LENGTH: "<<artistList.size()<<std::endl;
+    //artistList.printArtistList();
+    //copy.printArtistList();
+     /*
     
     std::cout<<"FULL LIST: "<<std::endl;
     artistList.printArtistList();
