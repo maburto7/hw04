@@ -11,9 +11,9 @@ int main() {
 	//std::ifstream in_file("spotify_daily_charts_artists.csv");
 	//std::ifstream in_file("test.csv");
 	std::ifstream in_file("test2.csv");
-	ArtistList artistList = parse_csv(in_file);
+	ArtistList l = parse_csv(in_file);
 	
-	/*
+	
 	// count artist names who begin with a, b, c, d, ...
 	int artist_begin_with[26] = {};
 	int artist_begin_not_alpha = 0;
@@ -39,7 +39,7 @@ int main() {
 	}
 
 	std::cout << "Artist names not beginning with a letter: " << artist_begin_not_alpha << std::endl;
-	*/
+	/*
 	//ArtistList copy = artistList;
     //std::cout<<"LENGTH: "<<copy.size()<<std::endl;
     //std::cout<<"OG LENGTH: "<<artistList.size()<<std::endl;
@@ -149,7 +149,7 @@ int main() {
 
 	artistList.printArtistList();
 
-
+	*/
 	return 0;
 	
 }
