@@ -23,7 +23,7 @@ void Artist::printArtist() const{
   std::cout<<"Total Followers: "<<total_followers<<std::endl;
 
   std::cout << "Genres: ";
-  bool first = true;
+  // bool first = true;
   int temp = max_genres;
   for (int i = 0; i < temp; i++) {
     if (!genres[i].empty()) {
