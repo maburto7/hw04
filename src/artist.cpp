@@ -27,11 +27,14 @@ void Artist::printArtist() const{
   int temp = max_genres;
   for (int i = 0; i < temp; i++) {
     if (!genres[i].empty()) {
+      std::cout<<genres[i]<<", ";
+      /*
       if (!first) {
         std::cout << ", ";
       }
       std::cout << genres[i];
       first = false;
+      */
     }
   }
   std::cout << std::endl;
